@@ -30,11 +30,33 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        $paiements = $this->paiementRepository->findAll();
         $users = $this->userRepository->findAll();
+        $results = [];
+
+        foreach ($users as $user) {
+            $total = 0;
+            foreach($user->getPaiements() as $p) {
+                $total += $p->getAmount();
+            }
+            $results[$user->getEmail()] = $total;
+        }
+        $max = max($results);
+        $min = min($results);
+        foreach($results as $email => $total) {
+            if($total === max($results)) {
+                $maxUser = $email;
+
+            } else {
+                $minUser = $email;
+
+            }
+        }
         return $this->render('home/index.html.twig', [
-            'paiements' => $paiements,
-            'users' => $users
+            'users' => $users,
+            'minUser' => $minUser,
+            'maxUser' => $maxUser,
+            'minP' => $min,
+            'maxP' => $max
         ]);
     }
 }

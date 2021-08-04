@@ -4,14 +4,23 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="title">Budget</h1>
-        {% for user in users %}
-            <h2 class="title title-medium">{{ user.email }}</h2>
-            <ul class="paiements" style="margin-bottom: 2rem">
-                {% for p in user.paiements %}
-                    <li>{{ p.amount ~ ' - ' ~ p.category.name }}</li>
-                {% endfor %}
-            </ul>
+        <h1 class="title" style="margin-bottom: 4rem">Budget</h1>
+        {% set spend = {} %}
+        {% for key , user in users %}
+            <div class="user-paiements" style="margin-bottom: 4rem">
+                <h2 class="title title-medium">{{ user.email }}</h2>
+                {% set total = 0 %}
+                <ul class="paiements items-crud" style="margin-bottom: 2rem">
+                    {% for p in user.paiements %}
+                        <li>{{ p.amount ~ ' - ' ~ p.category.name }}</li>
+                        {% set total = total + p.amount %}
+                    {% endfor %}
+                </ul>
+                <p class="total" style="font-weight: bold;font-size: 4rem">{{ total }} €</p>
+            </div>
         {% endfor %}
+        {% set diff = (maxP - minP)  %}
+        {% set amountTogive = ( diff / 2) %}
+        <p class="success" style="font-size: 2.4rem; margin-bottom: 4rem">{{ 'The user ' ~ maxUser ~ ' will receive ' ~ amountTogive ~ '€ from the user ' ~ minUser }}</p>
     </div>
 {% endblock %}
