@@ -1,0 +1,137 @@
+p[id^='priceSlider'], p[id^='noteSlider'] {
+  margin-bottom:2rem;
+}
+.noUi-connect {
+  background: #49107a;
+}
+.toggle-form {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.3);
+  cursor: pointer;
+  margin-bottom:4rem;
+  &:after {
+    content: '\25BC';
+    transition: transform .2s ease-in-out;
+  }
+}
+.toggle-form.open {
+  &:after {
+    transform: rotate(180deg);
+  }
+
+}
+.toggleable {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .2s ease-in-out, opacity .2s ease-in-out;
+}
+form, .form-box {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  div:last-of-type:not(.form-group):not(#game_gameCategory):not(#game_devices) {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    input {
+      margin-left: 2rem;
+      min-width: 1.8rem;
+      min-height: 1.8rem;
+    }
+  }
+  .form-group, & > div:not(div:last-of-type):not(.form-group):not(#priceSlider):not(#noteSlider) {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+
+    label:not(label[for='registration_form_agreeTerms']) {
+      position: absolute;
+      color: rgba(51, 51, 51, 0.48);
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1rem;
+      transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+      order: -1;
+      opacity: 1;
+      user-select: none;
+    }
+
+    #game_gameCategory label, #game_devices label {
+      position:relative; transform: none;color:#f1f1f1; margin: 0 2rem 0 0;
+    }
+
+
+    & .form-group, & + div {
+      margin-top: 4rem;
+    }
+    input:not(input[type="checkbox"]), textarea, select {
+      padding: 1.5rem;
+      border-radius: .5rem;
+      overflow: hidden;
+      &::placeholder {
+        color: transparent;
+      }
+      &:not(:placeholder-shown) {
+        & + label:not(label[for='registration_form_agreeTerms']){
+          display: none;
+        }
+      }
+      &:focus {
+        & + label:not(label[for='registration_form_agreeTerms']){
+          transform: translateY(-50%) translateX(-200%);
+          opacity: 0;
+        }
+      }
+    }
+
+    select + label {
+      display: none;
+    }
+
+    label[for='date'] {
+      color: transparent;
+    }
+  }
+
+  div[placeholder='date'] {
+    select + select {
+      margin-left: 2rem;
+    }
+  }
+  input[type='submit'], button[type='submit'] {
+    margin: 2rem 0;
+    width: fit-content;
+  }
+}
+
+.form-box {
+  width: 50%;
+  margin: 0 auto;
+  background: rgba(255,255,255, 0.1);
+  padding: 2rem;
+  border-radius: .4rem;
+}
+
+.form-inline {
+  flex-direction: row;
+  min-width: 100%;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .form-group, div:not(div:last-of-type):not(.form-group) {
+    & .form-group, & + div {
+      margin-top: 0;
+    }
+    input {
+      border-radius: .5rem 0 0 .5rem;
+    }
+  }
+  .btn {
+    margin: 0;
+    width: auto;
+    border-radius: 0 .5rem .5rem 0;
+    height: 100%;
+  }
+}

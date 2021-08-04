@@ -1,0 +1,42 @@
+@use 'media-queries' as m;
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+[class⁼col-] {
+  flex-basis: 100%;
+}
+$columns: 12;
+@include m.mq(big) {
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      flex: 0 0 (100% / ($columns / $i));
+    }
+    .col-offset-#{$i} {
+      margin-left: 100% / ($columns/$i);
+    }
+  }
+}
+.container {
+  width: 70vw;
+  margin: 0 auto;
+  &-full-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+  &-full-page-nav {
+    min-height: calc(100vh - var(--nav-height) - 15rem - 9.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+  @include m.mq(large) {
+    width: 80vw;
+  }
+  @include m.mq(small) {
+    width: 85vw;
+  }
+}

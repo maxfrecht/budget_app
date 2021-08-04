@@ -1,0 +1,31 @@
+{
+    "devDependencies": {
+        "@symfony/stimulus-bridge": "^2.0.0",
+        "@symfony/webpack-encore": "^1.0.0",
+        "core-js": "^3.0.0",
+        "file-loader": "^6.2.0",
+        "regenerator-runtime": "^0.13.2",
+        "sass": "^1.37.5",
+        "sass-loader": "^12.1.0",
+        "stimulus": "^2.0.0",
+        "ts-loader": "^9.2.5",
+        "typescript": "^4.3.5",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "animate.css": "^4.1.1",
+        "aos": "^2.3.4",
+        "bootstrap": "^5.1.0",
+        "material-design-icons": "^3.0.1",
+        "swiper": "^6.8.1",
+        "transition-style": "^0.1.1"
+    }
+}

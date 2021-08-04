@@ -1,0 +1,65 @@
+.btn-icon > span {
+  font-size: 6rem;
+  opacity: .5;
+  transition: opacity .2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+.btn {
+  display:inline-block;
+  padding: 1rem 1.5rem;
+  background: #333;
+  color: #f1f1f1;
+  border: .1rem solid rgba(241,241,241, 0.1);
+  border-radius: .3rem;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.8rem;
+  transition: transform .2s ease-in-out;
+
+  &-alone {
+    margin: 0 0 2rem 2rem;
+  }
+
+  &:hover {
+    transform: scale(1.01) perspective(1px);
+  }
+  &-danger {
+    background: #972424;
+  }
+  &-success {
+    background: #13c113;
+    color: #333;
+  }
+  &-update {
+    color: #333;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: #77d50d;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  .btn + .btn, form + .btn, .btn + form {
+    margin-left: 1rem;
+  }
+  form {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  form input[type='submit'] {
+    margin: 0;
+  }
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
