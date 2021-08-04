@@ -41,6 +41,9 @@ form, .form-box {
       min-height: 1.8rem;
     }
   }
+  .btn {
+    margin: 2rem 0;
+  }
   .form-group, & > div:not(div:last-of-type):not(.form-group):not(#priceSlider):not(#noteSlider) {
     position: relative;
     display: flex;

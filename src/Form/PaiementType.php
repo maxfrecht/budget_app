@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Paiement;
+use App\Entity\PaiementCategory;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,9 +17,16 @@ class PaiementType extends AbstractType
     {
         $builder
             ->add('amount')
-            ->add('createdAt')
-            ->add('user')
-            ->add('category')
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'email',
+                'label' => 'Utilisateur',
+            ])
+            ->add('category', EntityType::class, [
+                'class' => PaiementCategory::class,
+                'choice_label' => 'name',
+                'label' => 'Catégorie'
+            ])
         ;
     }
 
