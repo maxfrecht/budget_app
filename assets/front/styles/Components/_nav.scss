@@ -1,8 +1,7 @@
-nav {
+nav, .nav-month {
   position: relative;
   border-bottom: .1rem solid rgba(241, 241, 241, 0.2);
-  margin-bottom: 4rem;
-  background: rgb(10, 122, 59);
+  background: var(--main-color);
 
   .container {
     display: flex;
@@ -121,6 +120,44 @@ nav {
     filter: grayscale(1) brightness(1.5);
     opacity: .1;
   }
+}
 
+.nav-month {
+  background: #064722;
+  margin-bottom: 4rem;
 
+  .container {
+    min-height: 6rem;
+    line-height: 2rem;
+  }
+
+  &:after {
+    content: none;
+  }
+
+  ul.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
+
+    li {
+      border: .1rem solid transparent;
+      padding: 1rem;
+      border-radius: .5rem
+    }
+
+    li.active {
+      border: .1rem solid rgba(241, 241, 241, 0.3);
+      font-weight: 700;
+      a {
+        color: #beffe1;
+      }
+    }
+
+    li + li {
+      margin: 0;
+    }
+  }
 }

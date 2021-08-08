@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PaiementCategory{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="title">Créer une nouvelle catégorie de paiement</h1>
+
+        {{ include('paiement_category/_form.html.twig') }}
+
+        <a href="{{ path('paiement_category_index') }}">Retour à la liste des catégorie</a>
+    </div>
+{% endblock %}

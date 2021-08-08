@@ -7,7 +7,7 @@
 [class⁼col-] {
   flex-basis: 100%;
 }
-$columns: 12;
+$columns: 12;f1f1f1
 @include m.mq(big) {
   @for $i from 1 through $columns {
     .col-#{$i} {

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ 'page.login.login'|trans|capitalize }}{% endblock %}
 {% block header %}{% endblock %}
 {% block bodyclass %}log-in{% endblock %}
 {% block body %}
@@ -20,19 +20,19 @@
                     </div>
                 {% endif %}
 
-                <h1 class="title">Connexion</h1>
+                <h1 class="title">{{ 'nav.link.login'|trans }}</h1>
                 <div class="form-group">
                     <input placeholder="Entrez votre e-mail" type="email" value="{{ last_username }}" name="email"
                            id="inputEmail" class="form-control"
                            autocomplete="email" required autofocus>
-                    <label for="inputEmail">Email</label>
+                    <label for="inputEmail">{{ 'page.login.email'|trans|capitalize }}</label>
                 </div>
                 <div class="form-group" style="margin-left: 0">
                     <input placeholder="Entrez votre Mot de passe" type="password" name="password" id="inputPassword"
                            class="form-control"
                            autocomplete="current-password"
                            required>
-                    <label for="inputPassword">Mot de passe</label>
+                    <label for="inputPassword">{{ 'page.login.password'|trans|capitalize }}</label>
                 </div>
 
                 <input type="hidden" name="_csrf_token"
@@ -51,9 +51,9 @@
                 #}
 
                 <button class="btn btn-lg btn-primary" type="submit">
-                    Se connecter
+                    {{ 'page.login.login'|trans|capitalize }}
                 </button>
-                <a href="{{ path('app_register') }}" style="text-align: right; opacity:.5">Créer un compte</a>
+                <a href="{{ path('app_register') }}" style="text-align: right; opacity:.5">{{ 'page.login.register'|trans|capitalize }}</a>
             </form>
         </div>
     </div>

@@ -1,0 +1,13 @@
+page:
+  login:
+    register: "créer un compte"
+    password: "mot de passe"
+    email: "e-mail"
+    login: "connexion"
+nav:
+  link:
+    add_paiement: "Ajouter un paiement"
+    add_paiement_category: "Ajouter une catégorie de paiement"
+    login: "Connexion"
+    logout: "Déconnexion"
+    title: "Ma Bourse"

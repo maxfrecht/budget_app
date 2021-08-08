@@ -1,0 +1,10 @@
+<div class="nav-month">
+    <div class="container">
+        <ul class="nav-items months">
+            {% for i in 11..1 %}
+                <li class="{{ app.request.pathInfo is same as('/fr/month/' ~ i) ? 'active' : '' }}"><a href="{{ path('home_month', {'less': i}) }}">{{ "now"|date_modify("-" ~ i ~ " month")|format_datetime(pattern="MM/Y", locale='fr')|capitalize }}</a></li>
+            {% endfor %}
+            <li class="{{ app.request.pathInfo is same as('/fr/') ? 'active' : '' }}"><a href="{{ path('home') }}">{{ "now"|format_datetime(pattern="MM/Y", locale='fr')|capitalize }}</a></li>
+        </ul>
+    </div>
+</div>

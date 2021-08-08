@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_widget(form.name, {'attr': {'placeholder': 'name'}}) }}
+    {{ form_label(form.name, 'Nom') }}
+</div>
+    <button class="btn">{{ button_label|default('Créer') }}</button>
+{{ form_end(form) }}

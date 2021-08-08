@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('front-style') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('front-scripts') }}
-        {% endblock %}
-    </head>
-
-    <body class="{% block bodyclass %}{% endblock bodyclass %}">
-    {% block header %}
-        <header>
-            <nav class="navbar">
-                <div class="container">
-                    <a href="/" class="navbar-brand">Budget</a>
-                    <span class="burger"></span>
-                    <ul class="nav-items">
-                        {% if app.user %}
-                            <li class="nav-item"><a href="{{ path('paiement_new') }}" class="nav-link">Ajouter un paiement</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Admin</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Ajouter une catégorie de paiment</a></li>
-                        {% endif %}
-                        <li class="nav-item logout"><a href="{{ app.user ? path('app_logout') : path('app_login') }}"
-                                                       class="nav-link">{{ app.user ? 'Déconnexion' : 'Connexion' }}</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('front-style') }}
     {% endblock %}
-    {% block body %}{% endblock %}
-    {% block footer %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('front-scripts') }}
     {% endblock %}
-    </body>
+</head>
+
+<body class="{% block bodyclass %}{% endblock bodyclass %}">
+{% block header %}
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="{{ path('home') }}" class="navbar-brand">{{ 'nav.link.title'|trans }}</a>
+                <span class="burger"></span>
+                <ul class="nav-items">
+                    {% if app.user %}
+                        <li class="nav-item"><a href="{{ path('paiement_new') }}"
+                                                class="nav-link">{{ 'nav.link.add_paiement'|trans }}</a></li>
+                        <li class="nav-item"><a href="{{ path('paiement_category_new') }}"
+                                                class="nav-link">{{ 'nav.link.add_paiement_category'|trans }}</a></li>
+                    {% endif %}
+                    <li class="nav-item logout"><a href="{{ app.user ? path('app_logout') : path('app_login') }}"
+                                                   class="nav-link">{{ app.user ? 'nav.link.logout'|trans : 'nav.link.login'|trans }}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
+{% block body %}{% endblock %}
+{% block footer %}
+{% endblock %}
+</body>
 </html>

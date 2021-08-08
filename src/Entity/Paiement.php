@@ -39,6 +39,11 @@ class Paiement
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isRecurrent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +93,18 @@ class Paiement
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getIsRecurrent(): ?bool
+    {
+        return $this->isRecurrent;
+    }
+
+    public function setIsRecurrent(bool $isRecurrent): self
+    {
+        $this->isRecurrent = $isRecurrent;
 
         return $this;
     }

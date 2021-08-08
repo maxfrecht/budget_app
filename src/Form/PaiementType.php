@@ -27,6 +27,7 @@ class PaiementType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'Catégorie'
             ])
+            ->add('isRecurrent');
         ;
     }
 

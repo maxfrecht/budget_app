@@ -34,7 +34,7 @@ class PaiementController extends AbstractController
             $entityManager->persist($paiement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('paiement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('paiement/new.html.twig', [
@@ -69,15 +69,15 @@ class PaiementController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'paiement_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'paiement_delete', methods: ['POST', 'GET'])]
     public function delete(Request $request, Paiement $paiement): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$paiement->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($paiement);
-            $entityManager->flush();
-        }
 
-        return $this->redirectToRoute('paiement_index', [], Response::HTTP_SEE_OTHER);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($paiement);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
 }

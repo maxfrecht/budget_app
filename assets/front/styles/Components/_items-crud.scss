@@ -1,6 +1,6 @@
 .items-crud {
  li {
-   background: rgba(241, 241, 241, 0.2);
+   background: rgba(#212621, 0.2);
    padding: 1.5rem;
    p {
      max-height: 0;
@@ -28,5 +28,16 @@
     justify-content: space-between;
     padding: 1rem;
     border-radius: .3rem;
+  }
+
+  input {
+    outline: none;
+  }
+
+  .btn-icon {
+    background: transparent;
+    color: #f1f1f1;
+    overflow: hidden;
+    border: 0;
   }
 }

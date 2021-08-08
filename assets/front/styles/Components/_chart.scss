@@ -1,0 +1,13 @@
+#chart {
+  max-width: 80rem;
+  max-height:45rem;
+}
+
+.chart-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  margin-bottom:4rem;
+  border-radius: .5rem;
+}

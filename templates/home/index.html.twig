@@ -1,30 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Budget{% endblock %}
-
 {% block body %}
     {% if app.user %}
+        {% block navMonth %}
+            {% include 'home/nav-month.html.twig' %}
+        {% endblock %}
         <div class="container">
-            <h1 class="title" style="margin-bottom: 4rem">Budget</h1>
-            {% set spend = {} %}
-            {% for key , user in users %}
-                <div class="user-paiements"
-                     style="margin-bottom: 4rem; padding: 4rem; border: .1rem solid rgba(241,241,241,0.35); border-radius:.5rem">
-                    <h2 class="title title-medium">{{ user.email }}</h2>
-                    {% set total = 0 %}
-                    <ul class="paiements items-crud" style="margin-bottom: 2rem">
-                        {% for p in user.paiements %}
-                            <li>{{ p.amount ~ ' - ' ~ p.category.name }}</li>
-                            {% set total = total + p.amount %}
-                        {% endfor %}
-                    </ul>
-                    <p class="total" style="font-weight: bold;font-size: 4rem">{{ total }} €</p>
-                </div>
-            {% endfor %}
             {% set diff = (maxP - minP) %}
             {% set amountTogive = ( diff / 2) %}
             <p class="success"
-               style="font-size: 2.4rem; margin-bottom: 4rem">{{ 'The user ' ~ maxUser ~ ' will receive ' ~ amountTogive ~ '€ from the user ' ~ minUser }}</p>
+               style="font-size: 2.4rem; margin-bottom: 4rem; text-align: center">{{ maxUser ~ ' va recevoir ' ~ amountTogive|number_format(2, ',') ~ "€ de " ~ minUser }}</p>
+            <div class="chart-card glass">
+                <h1 class="title">Répartition des dépenses  du mois</h1>
+                <canvas id="chart"></canvas>
+            </div>
+            {% for key , user in users %}
+                <div class="user-paiements glass"
+                     style="margin-bottom: 4rem; padding: 4rem;">
+                    <h2 class="title title-medium toggle-form" style="margin-bottom: 4rem">{{ user.pseudo }}</h2>
+                    {% set total = 0 %}
+                    <ul class="paiements items-crud toggleable" style="margin-bottom: 4rem">
+                        {% for paiement in usersPaiements[user.email] %}
+                            <li class=" post-category" data-amount="{{ paiement.amount }}" data-category="{{ paiement.category.name }}">
+                                <span>{{ paiement.amount|number_format(2, ',') ~ '€ - ' ~ paiement.category.name }}</span>
+                                <div class="buttons">
+                                    <a class="btn-icon"
+                                       href="{{ path('paiement_edit', {'id': paiement.id}) }}">
+                                        <span class="material-icons">update</span>
+                                    </a>
+                                    {{ include('paiement/_delete_form.html.twig') }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <p class="total" style="font-weight: bold;font-size: 4rem"><span
+                                style="font-size: 3.6rem; font-weight: normal">Total : </span>{{ results[user.pseudo]|number_format(2, ',') }}
+                        €</p>
+                </div>
+            {% endfor %}
+
         </div>
     {% endif %}
 {% endblock %}

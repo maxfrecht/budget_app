@@ -73,6 +73,9 @@ form, .form-box {
       padding: 1.5rem;
       border-radius: .5rem;
       overflow: hidden;
+      outline:none;
+      border: none;
+      box-shadow: 0 0 .3rem rgba(5, 129, 30, 0.3);
       &::placeholder {
         color: transparent;
       }
